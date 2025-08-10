@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - ${PORT:-30092}:9000
+    environment:
+      - TZ=${TZ:-Australia/Brisbane}
+    volumes:
+      - ${DATA_PATH}/portainer/data:/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - portainer-network
+
+networks:
+  portainer-network:
+    driver: bridge 
