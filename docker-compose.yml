@@ -13,8 +13,8 @@ services:
       - ${DATA_PATH}/portainer/data:/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
-      - portainer-network
+      - homelab-network
 
 networks:
-  portainer-network:
-    driver: bridge 
+  homelab-network:
+    external: true 
